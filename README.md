@@ -29,7 +29,7 @@ KVVideoManager.shared.merge(arrayVideos: [videoAsset1, videoAsset2]) { (outputUR
       }
       else {
            if let url = outputURL {
-               print("Output video file:\(outputURL)")
+               print("Output video file:\(url)")
            }
      }
 }
@@ -45,7 +45,7 @@ KVVideoManager.shared.mergeWithAnimation(arrayVideos: [videoAsset1, videoAsset2]
       }
       else {
            if let url = outputURL {
-               print("Output video file:\(outputURL)")
+               print("Output video file:\(url)")
            }
      }
 }
@@ -61,7 +61,7 @@ KVVideoManager.shared.merge(video:videoAsset, withBackgroundMusic:musicAsset) { 
       }
       else {
            if let url = outputURL {
-               print("Output video file:\(outputURL)")
+               print("Output video file:\(url)")
            }
      }
 }
@@ -90,7 +90,7 @@ KVVideoManager.shared.makeVideoFrom(data: [videoData, imageData], textData: [tex
       }
       else {
            if let url = outputURL {
-               print("Output video file:\(outputURL)")
+               print("Output video file:\(url)")
            }
      }      
 }
