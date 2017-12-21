@@ -96,7 +96,7 @@ KVVideoManager.shared.makeVideoFrom(data: [videoData, imageData], textData: [tex
 }
 ```
 ## Note
-This is a sample implementation to demonstrate the functions in AVFoundation with just some simple animations, but you got an idea ! 
+This is a sample implementation to demonstrate the functions in AVFoundation with just some simple animations, but you got the idea ! 
 
 You would be able to add more complicated transition animation, text showing animation by using Core Animation !!!
 
