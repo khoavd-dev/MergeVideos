@@ -31,17 +31,17 @@ class ViewController: UIViewController {
         let button = sender as! UIButton
         button.isEnabled = false
         
-        let urlMovie1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
-        let urlMovie2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
+        let urlVideo1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
+        let urlVideo2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
         
-        let movieAsset1 = AVAsset(url: urlMovie1!)
-        let movieAsset2 = AVAsset(url: urlMovie2!)
+        let videoAsset1 = AVAsset(url: urlVideo1!)
+        let videoAsset2 = AVAsset(url: urlVideo2!)
         
         indicatorView.isHidden = false
         indicatorView.startAnimating()
         labelProcessing.isHidden = false
         
-        KVVideoManager.shared.merge(arrayVideos: [movieAsset1, movieAsset2]) {[weak self] (outputURL, error) in
+        KVVideoManager.shared.merge(arrayVideos: [videoAsset1, videoAsset2]) {[weak self] (outputURL, error) in
             guard let aSelf = self else { return }
             
             button.isEnabled = true
@@ -63,17 +63,17 @@ class ViewController: UIViewController {
         let button = sender as! UIButton
         button.isEnabled = false
         
-        let urlMovie1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
-        let urlMovie2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
+        let urlVideo1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
+        let urlVideo2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
         
-        let movieAsset1 = AVAsset(url: urlMovie1!)
-        let movieAsset2 = AVAsset(url: urlMovie2!)
+        let videoAsset1 = AVAsset(url: urlVideo1!)
+        let videoAsset2 = AVAsset(url: urlVideo2!)
         
         indicatorView.isHidden = false
         indicatorView.startAnimating()
         labelProcessing.isHidden = false
         
-        KVVideoManager.shared.mergeWithAnimation(arrayVideos: [movieAsset1, movieAsset2]) { [weak self] (outputURL, error) in
+        KVVideoManager.shared.mergeWithAnimation(arrayVideos: [videoAsset1, videoAsset2]) { [weak self] (outputURL, error) in
             guard let aSelf = self else { return }
             
             button.isEnabled = true
