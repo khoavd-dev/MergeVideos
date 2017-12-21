@@ -1,0 +1,14 @@
+#Pods/*
+#Podfile.lock
+
+# Mac OS X Finder
+.DS_Store
+
+# Ignore pod folder
+.Podfile.swp
+Podfile.lock
+Pods/
+
+# Xcode
+xcuserdata/
+DerivedData/

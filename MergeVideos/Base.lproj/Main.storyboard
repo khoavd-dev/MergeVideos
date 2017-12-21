@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I1c-Vj-vOE">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MergeVideos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G75-Xh-ipZ">
+                                <rect key="frame" x="133" y="185" width="108" height="30"/>
+                                <state key="normal" title="Merge 2 Videos"/>
+                                <connections>
+                                    <action selector="actionMergeTwoVideos:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vd1-K8-IZ3"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gYM-Bk-20N">
+                                <rect key="frame" x="16" y="78" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Processing..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsc-Zu-Oqp">
+                                <rect key="frame" x="44" y="78" width="99" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9W-Ih-sHG">
+                                <rect key="frame" x="79" y="235" width="216" height="30"/>
+                                <state key="normal" title="Merge 2 Videos With Animation"/>
+                                <connections>
+                                    <action selector="actionMergeTwoVideosWithAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tPN-cj-of2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2p-2X-mV0">
+                                <rect key="frame" x="106" y="285" width="163" height="30"/>
+                                <state key="normal" title="Merge Videos &amp; Images"/>
+                                <connections>
+                                    <action selector="actionButtonMergeVideosAndImages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kIZ-Tt-AcS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="o9W-Ih-sHG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="22p-Iy-5sj"/>
+                            <constraint firstItem="L2p-2X-mV0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6zr-HG-9dR"/>
+                            <constraint firstItem="o9W-Ih-sHG" firstAttribute="top" secondItem="G75-Xh-ipZ" secondAttribute="bottom" constant="20" id="AdU-Ny-1Ud"/>
+                            <constraint firstItem="G75-Xh-ipZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tc3-tJ-5FE"/>
+                            <constraint firstItem="G75-Xh-ipZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="121" id="ZdR-oT-7Nc"/>
+                            <constraint firstItem="L2p-2X-mV0" firstAttribute="top" secondItem="o9W-Ih-sHG" secondAttribute="bottom" constant="20" id="szc-Eh-hix"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OuE-hx-m9E"/>
+                    <connections>
+                        <outlet property="buttonMergeVideosImages" destination="L2p-2X-mV0" id="bIf-4U-8od"/>
+                        <outlet property="indicatorView" destination="gYM-Bk-20N" id="y3e-JO-vQq"/>
+                        <outlet property="labelProcessing" destination="qsc-Zu-Oqp" id="KYY-3W-tx5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="543" y="118"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IVy-sg-A3R">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I1c-Vj-vOE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zPP-CG-atA">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="U5z-XZ-BHq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y83-eQ-uep" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-241" y="118"/>
+        </scene>
+    </scenes>
+</document>
