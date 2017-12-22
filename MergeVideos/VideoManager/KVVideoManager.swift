@@ -30,7 +30,7 @@ class TextData: NSObject {
 class KVVideoManager: NSObject {
     static let shared = KVVideoManager()
 
-    let defaultSize = CGSize(width: 1920, height: 720) // Default video size
+    let defaultSize = CGSize(width: 1920, height: 1080) // Default video size
     var videoDuration = 30.0 // Duration of output video when merging videos & images
     var imageDuration = 5.0 // Duration of each image
 
@@ -400,7 +400,7 @@ class KVVideoManager: NSObject {
                 fadeInAnimation.fromValue = NSNumber(value: 0)
                 fadeInAnimation.toValue = NSNumber(value: 1)
                 fadeInAnimation.isRemovedOnCompletion = false
-                fadeInAnimation.beginTime = insertTime.seconds
+                fadeInAnimation.beginTime = insertTime.seconds == 0 ? 0.05: insertTime.seconds
                 fadeInAnimation.fillMode = kCAFillModeForwards
                 imageLayer.add(fadeInAnimation, forKey: "opacityIN")
                 
@@ -475,10 +475,6 @@ class KVVideoManager: NSObject {
             }
         })
     }
-    
-    
-    
-    
 }
 
 // MARK:- Private methods

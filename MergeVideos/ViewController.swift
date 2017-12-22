@@ -28,9 +28,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionMergeTwoVideos(_ sender: Any) {
-        let button = sender as! UIButton
-        button.isEnabled = false
-        
         let urlVideo1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
         let urlVideo2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
         
@@ -44,7 +41,6 @@ class ViewController: UIViewController {
         KVVideoManager.shared.merge(arrayVideos: [videoAsset1, videoAsset2]) {[weak self] (outputURL, error) in
             guard let aSelf = self else { return }
             
-            button.isEnabled = true
             aSelf.indicatorView.isHidden = true
             aSelf.labelProcessing.isHidden = true
 
@@ -60,9 +56,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionMergeTwoVideosWithAnimation(_ sender: Any) {
-        let button = sender as! UIButton
-        button.isEnabled = false
-        
         let urlVideo1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
         let urlVideo2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
         
@@ -76,7 +69,6 @@ class ViewController: UIViewController {
         KVVideoManager.shared.mergeWithAnimation(arrayVideos: [videoAsset1, videoAsset2]) { [weak self] (outputURL, error) in
             guard let aSelf = self else { return }
             
-            button.isEnabled = true
             aSelf.indicatorView.isHidden = true
             aSelf.labelProcessing.isHidden = true
             
@@ -92,8 +84,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionButtonMergeVideosAndImages(_ sender: Any) {
-        buttonMergeVideosImages.isEnabled = false
-        
         let picker = DKImagePickerController()
         picker.assetType = .allAssets
         picker.showsEmptyAlbums = false
@@ -121,64 +111,44 @@ class ViewController: UIViewController {
     }
     
     private func preProcess(assets:[DKAsset]) -> Void {
-        var arrayData:[VideoData] = []
+        var arrayAsset:[VideoData] = []
         
-        for index in 0..<assets.count {
-            let asset = assets[index]
-            
+        var index = 0
+        assets.forEach { (asset) in
             let videoData = VideoData()
             videoData.index = index
+            index += 1
             
             if asset.isVideo {
                 videoData.isVideo = true
                 
-                asset.fetchAVAssetWithCompleteBlock({[weak self] (avAsset, info) in
-                    guard let aSelf = self else { return }
-                    guard let avAsset = avAsset else { return }
+                asset.fetchAVAsset(true, options: nil, completeBlock: { (avAsset, info) in
+                    guard let avAsset = avAsset else {return}
                     
                     videoData.asset = avAsset
                     
-                    arrayData.append(videoData)
-                    
-                    if arrayData.count == assets.count {
-                        arrayData.sort(by: { (data1, data2) -> Bool in
-                            return data1.index! < data2.index!
-                        })
-
-                        aSelf.indicatorView.isHidden = false
-                        aSelf.indicatorView.startAnimating()
-                        aSelf.labelProcessing.isHidden = false
-                        
-                        aSelf.mergeVideosAndImages(arrayData: arrayData)
-                    }
+                    arrayAsset.append(videoData)
                 })
             }
             else {
-                asset.fetchOriginalImageWithCompleteBlock({[weak self] (image, info) in
-                    guard let aSelf = self else { return }
-                    guard let image = image else { return }
+                asset.fetchOriginalImage(true, completeBlock: { (image, info) in
+                    guard let image = image else {return}
                     
                     videoData.image = image
                     
-                    arrayData.append(videoData)
-                    
-                    if arrayData.count == assets.count {
-                        arrayData.sort(by: { (data1, data2) -> Bool in
-                            return data1.index! < data2.index!
-                        })
-
-                        aSelf.indicatorView.isHidden = false
-                        aSelf.indicatorView.startAnimating()
-                        aSelf.labelProcessing.isHidden = false
-                        
-                        aSelf.mergeVideosAndImages(arrayData: arrayData)
-                    }
+                    arrayAsset.append(videoData)
                 })
             }
         }
+        
+        mergeVideosAndImages(arrayData: arrayAsset)
     }
     
     func mergeVideosAndImages(arrayData:[VideoData]) -> Void {
+        indicatorView.isHidden = false
+        indicatorView.startAnimating()
+        labelProcessing.isHidden = false
+        
         let textData = TextData()
         textData.text = "HELLO WORLD"
         textData.fontSize = 50
@@ -192,7 +162,6 @@ class ViewController: UIViewController {
             
             aSelf.indicatorView.isHidden = true
             aSelf.labelProcessing.isHidden = true
-            aSelf.buttonMergeVideosImages.isEnabled = true
             
             if let error = error {
                 print("Error:\(error.localizedDescription)")
