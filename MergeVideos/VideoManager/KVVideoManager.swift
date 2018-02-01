@@ -164,6 +164,11 @@ class KVVideoManager: NSObject {
             outputSize = defaultSize
         }
         
+        // Silence sound (in case of video has no sound track)
+        let silenceURL = Bundle.main.url(forResource: "silence", withExtension: "mp3")
+        let silenceAsset = AVAsset(url:silenceURL!)
+        let silenceSoundTrack = silenceAsset.tracks(withMediaType: AVMediaType.audio).first
+        
         // Init composition
         let mixComposition = AVMutableComposition.init()
         
@@ -175,6 +180,9 @@ class KVVideoManager: NSObject {
             var audioTrack:AVAssetTrack?
             if videoAsset.tracks(withMediaType: AVMediaType.audio).count > 0 {
                 audioTrack = videoAsset.tracks(withMediaType: AVMediaType.audio).first
+            }
+            else {
+                audioTrack = silenceSoundTrack
             }
             
             // Init video & audio composition track
@@ -282,6 +290,11 @@ class KVVideoManager: NSObject {
         let bgVideoAsset = AVAsset(url: bgVideoURL)
         let bgVideoTrack = bgVideoAsset.tracks(withMediaType: AVMediaType.video).first
         
+        // Silence sound (in case of video has no sound track)
+        let silenceURL = Bundle.main.url(forResource: "silence", withExtension: "mp3")
+        let silenceAsset = AVAsset(url:silenceURL!)
+        let silenceSoundTrack = silenceAsset.tracks(withMediaType: AVMediaType.audio).first
+        
         // Init composition
         let mixComposition = AVMutableComposition.init()
         
@@ -321,6 +334,9 @@ class KVVideoManager: NSObject {
                 var audioTrack:AVAssetTrack?
                 if videoAsset.tracks(withMediaType: AVMediaType.audio).count > 0 {
                     audioTrack = videoAsset.tracks(withMediaType: AVMediaType.audio).first
+                }
+                else {
+                    audioTrack = silenceSoundTrack
                 }
                 
                 // Init video & audio composition track

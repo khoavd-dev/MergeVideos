@@ -16,6 +16,7 @@
 		9FB5856F1FEA2F810082F0CE /* KVVideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5856E1FEA2F800082F0CE /* KVVideoManager.swift */; };
 		9FB585741FEA32AB0082F0CE /* movie1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9FB585721FEA32AB0082F0CE /* movie1.mov */; };
 		9FB585751FEA32AB0082F0CE /* movie2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9FB585731FEA32AB0082F0CE /* movie2.mov */; };
+		9FCC06E92022C4280078942F /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9FCC06E82022C4270078942F /* silence.mp3 */; };
 		9FE48B4D1FEB881900DBBA88 /* black.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9FE48B4C1FEB881900DBBA88 /* black.mov */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		9FB5856E1FEA2F800082F0CE /* KVVideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVVideoManager.swift; sourceTree = "<group>"; };
 		9FB585721FEA32AB0082F0CE /* movie1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie1.mov; sourceTree = "<group>"; };
 		9FB585731FEA32AB0082F0CE /* movie2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie2.mov; sourceTree = "<group>"; };
+		9FCC06E82022C4270078942F /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
 		9FE48B4C1FEB881900DBBA88 /* black.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = black.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 		9FC599CC1FEBE66600CA354C /* Sample video */ = {
 			isa = PBXGroup;
 			children = (
+				9FCC06E82022C4270078942F /* silence.mp3 */,
 				9FB585721FEA32AB0082F0CE /* movie1.mov */,
 				9FB585731FEA32AB0082F0CE /* movie2.mov */,
 				9FE48B4C1FEB881900DBBA88 /* black.mov */,
@@ -181,6 +184,7 @@
 			files = (
 				9FB585671FEA2F2C0082F0CE /* LaunchScreen.storyboard in Resources */,
 				9FB585751FEA32AB0082F0CE /* movie2.mov in Resources */,
+				9FCC06E92022C4280078942F /* silence.mp3 in Resources */,
 				9FE48B4D1FEB881900DBBA88 /* black.mov in Resources */,
 				9FB585641FEA2F2C0082F0CE /* Assets.xcassets in Resources */,
 				9FB585621FEA2F2C0082F0CE /* Main.storyboard in Resources */,
