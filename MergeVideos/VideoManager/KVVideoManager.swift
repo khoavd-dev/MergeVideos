@@ -357,7 +357,7 @@ class KVVideoManager: NSObject {
                     
                     // Add audio track to audio composition at specific time
                     if let audioTrack = audioTrack {
-                        try audioCompositionTrack?.insertTimeRange(CMTimeRangeMake(insertTime, duration),
+                        try audioCompositionTrack?.insertTimeRange(CMTimeRangeMake(startTime, duration),
                                                                   of: audioTrack,
                                                                   at: insertTime)
                     }
