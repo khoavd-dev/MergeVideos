@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		926A9B69B2331F99C8C9E1C6 /* Pods_MergeVideos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226F5B5B88298E15EBD89684 /* Pods_MergeVideos.framework */; };
+		9F21A12124B2E97F0099BEE2 /* landscape.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 9F21A11F24B2E97F0099BEE2 /* landscape.MOV */; };
+		9F21A12224B2E97F0099BEE2 /* portrait.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 9F21A12024B2E97F0099BEE2 /* portrait.MOV */; };
+		9F21A12424B2EC0C0099BEE2 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F21A12324B2EC0C0099BEE2 /* sample.mp3 */; };
+		9F52A872271F216300174122 /* KVExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52A871271F216300174122 /* KVExtensions.swift */; };
 		9FB5855D1FEA2F2C0082F0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5855C1FEA2F2C0082F0CE /* AppDelegate.swift */; };
 		9FB5855F1FEA2F2C0082F0CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5855E1FEA2F2C0082F0CE /* ViewController.swift */; };
 		9FB585621FEA2F2C0082F0CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB585601FEA2F2C0082F0CE /* Main.storyboard */; };
@@ -24,6 +28,10 @@
 		120D421B11D234A90309D709 /* Pods-MergeVideos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MergeVideos.release.xcconfig"; path = "Pods/Target Support Files/Pods-MergeVideos/Pods-MergeVideos.release.xcconfig"; sourceTree = "<group>"; };
 		226F5B5B88298E15EBD89684 /* Pods_MergeVideos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MergeVideos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		461AE80AAB042A2C5866C10C /* Pods-MergeVideos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MergeVideos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MergeVideos/Pods-MergeVideos.debug.xcconfig"; sourceTree = "<group>"; };
+		9F21A11F24B2E97F0099BEE2 /* landscape.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = landscape.MOV; sourceTree = "<group>"; };
+		9F21A12024B2E97F0099BEE2 /* portrait.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = portrait.MOV; sourceTree = "<group>"; };
+		9F21A12324B2EC0C0099BEE2 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
+		9F52A871271F216300174122 /* KVExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVExtensions.swift; sourceTree = "<group>"; };
 		9FB585591FEA2F2C0082F0CE /* MergeVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MergeVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB5855C1FEA2F2C0082F0CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FB5855E1FEA2F2C0082F0CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				9FB5856E1FEA2F800082F0CE /* KVVideoManager.swift */,
+				9F52A871271F216300174122 /* KVExtensions.swift */,
 			);
 			path = VideoManager;
 			sourceTree = "<group>";
@@ -102,10 +111,13 @@
 		9FC599CC1FEBE66600CA354C /* Sample video */ = {
 			isa = PBXGroup;
 			children = (
+				9F21A12324B2EC0C0099BEE2 /* sample.mp3 */,
 				9FCC06E82022C4270078942F /* silence.mp3 */,
 				9FB585721FEA32AB0082F0CE /* movie1.mov */,
 				9FB585731FEA32AB0082F0CE /* movie2.mov */,
 				9FE48B4C1FEB881900DBBA88 /* black.mov */,
+				9F21A11F24B2E97F0099BEE2 /* landscape.MOV */,
+				9F21A12024B2E97F0099BEE2 /* portrait.MOV */,
 			);
 			path = "Sample video";
 			sourceTree = "<group>";
@@ -130,8 +142,7 @@
 				9FB585551FEA2F2C0082F0CE /* Sources */,
 				9FB585561FEA2F2C0082F0CE /* Frameworks */,
 				9FB585571FEA2F2C0082F0CE /* Resources */,
-				25D4923A0E2BA389EFBFF380 /* [CP] Embed Pods Frameworks */,
-				6F52C4E72D1DAD234D923D8A /* [CP] Copy Pods Resources */,
+				3B6815DE4EC4279664DA34E5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,8 +193,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F21A12124B2E97F0099BEE2 /* landscape.MOV in Resources */,
 				9FB585671FEA2F2C0082F0CE /* LaunchScreen.storyboard in Resources */,
 				9FB585751FEA32AB0082F0CE /* movie2.mov in Resources */,
+				9F21A12224B2E97F0099BEE2 /* portrait.MOV in Resources */,
+				9F21A12424B2EC0C0099BEE2 /* sample.mp3 in Resources */,
 				9FCC06E92022C4280078942F /* silence.mp3 in Resources */,
 				9FE48B4D1FEB881900DBBA88 /* black.mov in Resources */,
 				9FB585641FEA2F2C0082F0CE /* Assets.xcassets in Resources */,
@@ -195,34 +209,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25D4923A0E2BA389EFBFF380 /* [CP] Embed Pods Frameworks */ = {
+		3B6815DE4EC4279664DA34E5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MergeVideos/Pods-MergeVideos-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework",
+				"${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKCamera.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKPhotoGallery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MergeVideos/Pods-MergeVideos-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6F52C4E72D1DAD234D923D8A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MergeVideos/Pods-MergeVideos-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MergeVideos/Pods-MergeVideos-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B6CD67D0F3C88CA3F855ECB8 /* [CP] Check Pods Manifest.lock */ = {
@@ -231,13 +243,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MergeVideos-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -249,6 +264,7 @@
 			files = (
 				9FB5855F1FEA2F2C0082F0CE /* ViewController.swift in Sources */,
 				9FB5856F1FEA2F810082F0CE /* KVVideoManager.swift in Sources */,
+				9F52A872271F216300174122 /* KVExtensions.swift in Sources */,
 				9FB5855D1FEA2F2C0082F0CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,13 +406,13 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = MG2552XA6Q;
 				INFOPLIST_FILE = MergeVideos/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yuno.MergeVideos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9827d264-3cdb-4f7c-ab3e-20ea79d7a9ed";
 				PROVISIONING_PROFILE_SPECIFIER = "VFJ-AppWildCard-Development";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -410,13 +426,13 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = MG2552XA6Q;
 				INFOPLIST_FILE = MergeVideos/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yuno.MergeVideos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5f5c5d9d-fe2c-47a4-b4a7-b70cbdb1357e";
 				PROVISIONING_PROFILE_SPECIFIER = AppWildcard;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

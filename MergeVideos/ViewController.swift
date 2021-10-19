@@ -27,61 +27,102 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func showProcessing(isShow: Bool) {
+        if isShow {
+            indicatorView.isHidden = false
+            indicatorView.startAnimating()
+            labelProcessing.isHidden = false
+        } else {
+            indicatorView.isHidden = true
+            indicatorView.stopAnimating()
+            labelProcessing.isHidden = true
+        }
+    }
+    
     @IBAction func actionMergeTwoVideos(_ sender: Any) {
-        let urlVideo1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
-        let urlVideo2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
+        guard let portraitURL = Bundle.main.url(forResource: "portrait", withExtension: "MOV"),
+              let landscapeURL = Bundle.main.url(forResource: "landscape", withExtension: "MOV")
+        else { return }
         
-        let videoAsset1 = AVAsset(url: urlVideo1!)
-        let videoAsset2 = AVAsset(url: urlVideo2!)
+        let portraitAsset = AVAsset(url: portraitURL)
+        let landscapeAsset = AVAsset(url: landscapeURL)
         
-        indicatorView.isHidden = false
-        indicatorView.startAnimating()
-        labelProcessing.isHidden = false
+        showProcessing(isShow: true)
         
-        KVVideoManager.shared.merge(arrayVideos: [videoAsset1, videoAsset2]) {[weak self] (outputURL, error) in
-            guard let aSelf = self else { return }
-            
-            aSelf.indicatorView.isHidden = true
-            aSelf.labelProcessing.isHidden = true
+        DispatchQueue.global().async {
+            KVVideoManager.shared.merge(arrayVideos: [portraitAsset, landscapeAsset]) {[weak self] (outputURL, error) in
+                guard let `self` = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.showProcessing(isShow: false)
 
-            if let error = error {
-                print("Error:\(error.localizedDescription)")
-            }
-            else {
-                if let url = outputURL {
-                    aSelf.openPreviewScreen(url)
+                    if let error = error {
+                        print("Error:\(error.localizedDescription)")
+                    }
+                    else if let url = outputURL {
+                        self.openPreviewScreen(url)
+                    }
                 }
             }
         }
     }
     
     @IBAction func actionMergeTwoVideosWithAnimation(_ sender: Any) {
-        let urlVideo1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
-        let urlVideo2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
+        guard let videoURL1 = Bundle.main.url(forResource: "movie1", withExtension: "mov"),
+              let videoURL2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
+        else { return }
         
-        let videoAsset1 = AVAsset(url: urlVideo1!)
-        let videoAsset2 = AVAsset(url: urlVideo2!)
+        let videoAsset1 = AVAsset(url: videoURL1)
+        let videoAsset2 = AVAsset(url: videoURL2)
         
-        indicatorView.isHidden = false
-        indicatorView.startAnimating()
-        labelProcessing.isHidden = false
+        showProcessing(isShow: true)
         
-        KVVideoManager.shared.mergeWithAnimation(arrayVideos: [videoAsset1, videoAsset2]) { [weak self] (outputURL, error) in
-            guard let aSelf = self else { return }
-            
-            aSelf.indicatorView.isHidden = true
-            aSelf.labelProcessing.isHidden = true
-            
-            if let error = error {
-                print("Error:\(error.localizedDescription)")
-            }
-            else {
-                if let url = outputURL {
-                    aSelf.openPreviewScreen(url)
+        DispatchQueue.global().async {
+            KVVideoManager.shared.mergeWithAnimation(arrayVideos: [videoAsset1, videoAsset2]) { [weak self] (outputURL, error) in
+                guard let `self` = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.showProcessing(isShow: false)
+                    
+                    if let error = error {
+                        print("Error:\(error.localizedDescription)")
+                    }
+                    else if let url = outputURL {
+                        self.openPreviewScreen(url)
+                    }
                 }
             }
         }
     }
+    
+    @IBAction func actionButtonAddMusic(_ sender: Any) {
+        guard let videoURL = Bundle.main.url(forResource: "portrait", withExtension: "MOV"),
+              let musicURL = Bundle.main.url(forResource: "sample", withExtension: "mp3")
+        else { return }
+        
+        let videoAsset = AVAsset(url: videoURL)
+        let musicAsset = AVAsset(url: musicURL)
+        
+        showProcessing(isShow: true)
+        
+        DispatchQueue.global().async {
+            KVVideoManager.shared.merge(video: videoAsset, withBackgroundMusic: musicAsset) {[weak self] (outputURL, error) in
+                guard let `self` = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.showProcessing(isShow: false)
+                    
+                    if let error = error {
+                        print("Error:\(error.localizedDescription)")
+                    }
+                    else if let url = outputURL {
+                        self.openPreviewScreen(url)
+                    }
+                }
+            }
+        }
+    }
+    
     
     @IBAction func actionButtonMergeVideosAndImages(_ sender: Any) {
         let picker = DKImagePickerController()
@@ -90,88 +131,98 @@ class ViewController: UIViewController {
         picker.showsCancelButton = true
         picker.allowsLandscape = false
         picker.maxSelectableCount = 6
+        picker.modalPresentationStyle = .fullScreen
         
         picker.didSelectAssets = {[weak self] (assets: [DKAsset]) in
-            guard assets.count > 0 else {return}
-            guard let aSelf = self else {return}
-            aSelf.preProcess(assets: assets)
+            guard let `self` = self, assets.count > 0 else {return}
+            self.preprocess(assets: assets)
         }
         
         present(picker, animated: true, completion: nil)
     }
     
-    func openPreviewScreen(_ videoURL:URL) -> Void {
+    private func openPreviewScreen(_ videoURL:URL) -> Void {
         let player = AVPlayer(url: videoURL)
         let playerController = AVPlayerViewController()
         playerController.player = player
+        playerController.modalPresentationStyle = .fullScreen
         
         present(playerController, animated: true, completion: {
             player.play()
         })
     }
     
-    private func preProcess(assets:[DKAsset]) -> Void {
+    private func preprocess(assets: [DKAsset]) {
         var arrayAsset:[VideoData] = []
         
         var index = 0
+        let group = DispatchGroup()
+        
         assets.forEach { (asset) in
-            let videoData = VideoData()
+            var videoData = VideoData()
             videoData.index = index
             index += 1
             
-            if asset.isVideo {
+            if asset.type == .video {
                 videoData.isVideo = true
                 
-                asset.fetchAVAsset(true, options: nil, completeBlock: { (avAsset, info) in
-                    guard let avAsset = avAsset else {return}
+                group.enter()
+                asset.fetchAVAsset { (avAsset, info) in
+                    guard let avAsset = avAsset else {
+                        group.leave()
+                        return
+                    }
                     
                     videoData.asset = avAsset
-                    
                     arrayAsset.append(videoData)
-                })
+                    group.leave()
+                }
             }
             else {
-                asset.fetchOriginalImage(true, completeBlock: { (image, info) in
-                    guard let image = image else {return}
+                group.enter()
+                asset.fetchOriginalImage { (image, info) in
+                    guard let image = image else {
+                        group.leave()
+                        return
+                    }
                     
                     videoData.image = image
-                    
                     arrayAsset.append(videoData)
-                })
+                    group.leave()
+                }
             }
         }
         
-        mergeVideosAndImages(arrayData: arrayAsset)
+        group.notify(queue: .main) {
+            self.mergeVideosAndImages(arrayData: arrayAsset)
+        }
     }
     
-    func mergeVideosAndImages(arrayData:[VideoData]) -> Void {
-        indicatorView.isHidden = false
-        indicatorView.startAnimating()
-        labelProcessing.isHidden = false
+    private func mergeVideosAndImages(arrayData: [VideoData]) {
+        showProcessing(isShow: true)
         
-        let textData = TextData()
-        textData.text = "HELLO WORLD"
-        textData.fontSize = 50
-        textData.textColor = UIColor.green
-        textData.showTime = 3
-        textData.endTime = 5
-        textData.textFrame = CGRect(x: 0, y: 0, width: 400, height: 300)
+        let textData = TextData(text: "HELLO WORLD",
+                                fontSize: 50,
+                                textColor: UIColor.green,
+                                showTime: 3,
+                                endTime: 5,
+                                textFrame: CGRect(x: 0, y: 0, width: 400, height: 300))
         
-        KVVideoManager.shared.makeVideoFrom(data: arrayData, textData: [textData], completion: {[weak self] (outputURL, error) in
-            guard let aSelf = self else { return }
-            
-            aSelf.indicatorView.isHidden = true
-            aSelf.labelProcessing.isHidden = true
-            
-            if let error = error {
-                print("Error:\(error.localizedDescription)")
-            }
-            else {
-                if let url = outputURL {
-                    aSelf.openPreviewScreen(url)
+        DispatchQueue.global().async {
+            KVVideoManager.shared.makeVideoFrom(data: arrayData, textData: [textData], completion: {[weak self] (outputURL, error) in
+                guard let `self` = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.showProcessing(isShow: false)
+                    
+                    if let error = error {
+                        print("Error:\(error.localizedDescription)")
+                    } else if let url = outputURL {
+                        self.openPreviewScreen(url)
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 }
 
