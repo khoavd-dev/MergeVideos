@@ -20,7 +20,7 @@ This is a sample implementation for merging multiple videos and/or images using 
 - Fix issue: merging videos shows black screen sometimes. (update `videoCompositionInstructionForTrack` function)
 
 ## Usage
-Drag the file `VideoManager/KVVideoManager.swift` into your project.
+Drag the files in `VideoManager` folder into your project.
 
 Please refer to the sample project `MergeVideos` for more details. (Don't forget to run `pod install` before opening the project).
 
