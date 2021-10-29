@@ -44,6 +44,8 @@ class ViewController: UIViewController {
               let landscapeURL = Bundle.main.url(forResource: "landscape", withExtension: "MOV")
         else { return }
         
+        
+        
         let portraitAsset = AVAsset(url: portraitURL)
         let landscapeAsset = AVAsset(url: landscapeURL)
         
